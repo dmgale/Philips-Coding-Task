@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/dmgale/Philips-Coding-Task/issues"
   },
-  "homepage": "https://github.com/dmgale/Philips-Coding-Task#readme"
+  "homepage": "https://github.com/dmgale/Philips-Coding-Task#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "chart.js": "^2.9.2",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
+  }
 }
