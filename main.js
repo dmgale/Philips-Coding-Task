@@ -12,31 +12,28 @@ function increment(holding, current) {
 async function getApiData() {
     const response = await fetch(url);
     const responseData = await response.json();
-	// console.log('Async Fetch:', responseData)
     // Add error handling
 
-    const objective = responseData.reduce((acc,{postId}) => {  
-    // TODO 2. The number of comments per post 
+    const objective = responseData.reduce((acc,{postId, email}) => {  
+    // Comments:
         increment(acc.comments, postId);
+    // Suffixes: 
+        const suffix = email.split('.').pop();
+        increment(acc.suffixes, suffix);
         return acc;
     },{
         comments : {},
+        suffixes : {}
     })
     console.log(objective.comments) 
-
-    // const comments = responseData.reduce((acc, { postId }) => {
-
-    //     if (acc[postId]) {
-    //         acc[postId] = acc[postId] + 1;
-    //     } else {
-    //         acc[postId] = 1;
-    //     }
-    //     return acc;
-    // }, {});
-    // console.log(comments); // 5 comments per postId exist x 100
+    console.log(objective.suffixes) 
 
 
 
+
+
+
+      // TODO 2. The number of comments per post
 
 // 5. Iterate through 'comments' object 
 // 6. Create Groups according to total number of comments per postId
@@ -48,17 +45,17 @@ async function getApiData() {
 
 // TODO 3. The most popular email address suffix i.e. .com 
 
-    const suffixes = responseData.reduce((acc, { email }) => {
-        const suffix = email.split('.').pop();
+    // const suffixes = responseData.reduce((acc, { email }) => {
+    //     const suffix = email.split('.').pop();
 
-        if (acc[suffix]) {
-            acc[suffix] = acc[suffix] + 1;
-        } else {
-            acc[suffix] = 1;
-        }
-        return acc;
-    }, {});
-    console.log(suffixes);
+    //     if (acc[suffix]) {
+    //         acc[suffix] = acc[suffix] + 1;
+    //     } else {
+    //         acc[suffix] = 1;
+    //     }
+    //     return acc;
+    // }, {});
+    // console.log(suffixes);
 
 // 7. Iterate through 'suffixes' object 
 // 8. Require Most Popular suffix:
