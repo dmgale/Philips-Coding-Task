@@ -9,7 +9,6 @@ function increment(holding, current) {
     }
 }
 
-
 // Fetch API & Reduce Data
 async function getApiData() {
     const response = await fetch(url);
@@ -32,55 +31,52 @@ async function getApiData() {
         keywords: {},
     })
 
-    // Reduced Objective Data
+    // Output Reduced Objective Data
     let commentsData = objective.comments;
     let suffixesData = objective.suffixes;
     let keywordsData = objective.keywords;
 
 
-    // Popular Suffix
+    // Return Most Popular Suffix
     function getPopularEmailSuffix() {
         mostPopularSuffix = Object.keys(suffixesData)
-        .reduce((a, b) => suffixesData[a] > suffixesData[b] ? a : b);
+            .reduce((a, b) => suffixesData[a] > suffixesData[b] ? a : b);
 
         value = Object.values(suffixesData);
         maxValue = Math.max(...value);
 
         console.log("Most popular Suffix is " + mostPopularSuffix + " occuring " + maxValue + " times.");
-        // 10. Display results in UI
+        //TODO Display results in UI
     }
     getPopularEmailSuffix();
 
 
-// TODO 2. The number of comments per post
+    // Return Most Popular Keywords
+    function getPopularKeywords() {
+        mostPopularKeywords = Object.assign(...Object
+            .entries(keywordsData)
+            .sort(({ 1: a }, { 1: b }) => b - a)
+            .slice(0, 5)  // Return top 5 Keywords
+            .map(([key, value]) => ({ [key]: value }))
+            )
+            
+        console.log("5 most popular keywords are:", mostPopularKeywords);
+        };
+    //TODO Display results in UI
+    getPopularKeywords();
 
-function getCommentsPerPost() {
 
-}
-getCommentsPerPost();
+    // Return Number of Comments per Post
+    function getCommentsPerPost() {
 
-// 5. Iterate through 'comments' object 
-// 6. Create Groups according to total number of comments per postId
-//    i.e. Group A =  post that have 'x' comments
-//         Group B =  post that have 'x' comments
-// 7. Return total number of comments per post (average) if many Groups
-// 8. Display results in UI
-
-
-// TODO 4. The most popular keywords in the body text
-
-function getPopularKeywords() {
-
-}
-getPopularKeywords();
-
-// 7. Iterate through 'keywords' object 
-// 8. Collect all objects into a single object, 
-// 9. Create a key for key/value pairs - Object.entries()
-// 10. Sortby Descending order - sort()
-// 11. Return the top (assume 5) keywords - slice() top 5 words
-// 12. Map object with key value pair and return - map()
-// 13. Display results in UI
+        // 5. Iterate through 'comments' object 
+        // 6. Create Groups according to total number of comments per postId
+        //    i.e. Group A =  post that have 'x' comments
+        //         Group B =  post that have 'x' comments
+        // 7. Return total number of comments per post (average) if many Groups
+        // 8. Display results in UI
+        
+        }
+        getCommentsPerPost();
 
 } //<--- END OF CLICK EVENT LISTENER 
-
