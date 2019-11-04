@@ -3,6 +3,12 @@ const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
 //Fetch on First Load
 getApiData()
 
+//Last data refresh
+function lastRefresh() { 
+    var apiFetch = new Date();
+    document.getElementById('refreshDataTime').innerHTML=apiFetch
+}
+
 //Increment Objectives Data
 function increment(holding, current) {
     if (holding[current]) {
@@ -69,13 +75,15 @@ async function getApiData() {
     console.log([commentKeys])
     console.log([commentValues])
 
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+// Large Barchart Keywords
+
+    var ctx = document.getElementById('myKeywordsChart').getContext('2d');
+    var myKeywordsChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: commentKeys,
             datasets: [{
-                label: '# of Votes',
+                label: ['Top  Keywords'],
                 data: commentValues,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -107,6 +115,7 @@ async function getApiData() {
         }
     });
 };
+
     getPopularKeywords();
 
 
@@ -123,4 +132,6 @@ async function getApiData() {
         }
         getCommentsPerPost();
 
+        // Reflect refresh on Time Display
+        lastRefresh()
 } //<--- END OF CLICK EVENT LISTENER 

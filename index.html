@@ -4,76 +4,137 @@
 <head>
   <script src="main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-  <link rel="stylesheet" href="styles.css"></link>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+
+  <link rel="stylesheet" href="styles.css">
+  </link>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  </link>
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coding Task</title>
+  <title>Philips Comments Monitor</title>
 </head>
 
 <body>
+  <div id="navbar" class="navbar navbar-light fixed-top bg-light">
+    <a class="navbar-brand" href="#">
+      <img class="logoImg" src="/img/philips_logo.png" alt="Philips Healthcare">
+      <span class="logo logo-left">Comments</span>
+      <span class="logo logo-right">Monitor</span>
+    </a>
+    <div>
+      <h6 class="HP_logo"><img class="logoImg" src="/img/h_p_logo.png" alt="Health & Parenting" class="img-fluid">
+        Pregnancy +</h6>
+    </div>
+  </div>
 
+  <div class="container-fluid">
+    <div class="row" id="mainContent">
+      <div id="dashboard" class="col-sm-9 ml-sm-auto col-md-10 pt3 bg-white">
+      </div>
+    </div>
+  </div>
 
-  <div id="navbar"class="navbar navbar-light fixed-top bg-light">
-
-
-      <div>
-          <h1>Comments Dashboard</h1>
-        </div>
+  <div class="section-container">
+      <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Task Objective
+                </button>
+              </h2>
+            </div>
         
-  </div>
-  
-<div class="container-fluid">
-  <div class="row" id="mainContent">
-      <div id="dashboard"class="col-sm-9 ml-sm-auto col-md-10 pt3 bg-white">
-      </div>
-  </div>
-</div>
-
-  <div class="section-container">
-      <div class="row-fluid cards">
-        <div class="card-deck">
-          <div class="card mb-3 shadow card-theme">
-            <div class="card-header card-header-theme">
-              <h5>Objective 1</h5>
-            </div>
-            <div class="card-body"></div>
-            <app-bar-chart></app-bar-chart>
-            </div>
-          <div class="card mb-3 shadow card-theme">
-              <div class="card-header card-header-theme">
-                <h5>Objective 2</h5>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                  <p>Pull all of the comments from the following endpoint:</p>
+                  <div class="alert alert-primary text-center" role="alert">
+                      <a href="https://jsonplaceholder.typicode.com/posts/1/comments">https://jsonplaceholder.typicode.com/posts/1/comments</a>
+                  </div>
+                  <p>And answer the following questions:</p>
+                      <ul>
+                        <li>The number of comments per post</li>
+                        <li>The most popular email address suffix i.e. .com</li>
+                        <li>The most popular keywords in the body text</li>
+                      </ul> 
               </div>
-              <div class="card-body"></div>
-              <app-pie-chart *ngIf='policyDataByHolder' [inputData]='policyDataByHolder' [limit]='3'></app-pie-chart>
-              </div>
-          <div class="card mb-3 shadow card-theme">
-            <div class="card-header card-header-theme">
-              <h5>Objective 3</h5>
-            </div>
-            <div class="card-body"></div>
-            <app-pie-chart *ngIf='polcyDataByCountry' [inputData]='polcyDataByCountry' [limit]='5'></app-pie-chart>
             </div>
           </div>
-        </div>
-        <div class="row-fluid cards">
-          <div class="card shadow card-theme card-bottom">
-            <div class="card-header card-header theme">
-              <h5>Top Keywords</h5>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Results
+                </button>
+              </h2>
             </div>
-            <div class="card-body">
-                <div><canvas id="myChart"></canvas></div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                
+              </div>
             </div>
-          </div>
+          </div>      
         </div>
       </div>
 
+
   <div class="section-container">
-    <button type="button" id="fetchData" class="btn btn-primary btn-lg btn-block" onclick="getApiData()">Refresh Data</button>
-  </div>>
+    <div class="row-fluid cards">
+      <div class="card-deck">
+        <div class="card mb-3 shadow card-theme">
+          <div class="card-header card-header theme">
+            <h5>Comments Count</h5>
+            <p class="font-weight-normal">The number of comments per post</p>
+          </div>
+          <div class="card-body"></div>
+          <p>chart 1</p>
+        </div>
+        <div class="card mb-3 shadow card-theme">
+          <div class="card-header card-header-theme">
+            <h5>Top Suffix</h5>
+          </div>
+          <div class="card-body"></div>
+          <p>The most popular email address suffix i.e. .com</p>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid cards">
+      <div class="card shadow card-theme card-bottom">
+        <div class="card-header card-header theme">
+          <h5>Top 6 Keywords</h5>
+          <p class="font-weight-normal">The most popular keywords in the body text, vs number of occurances within the body text</p>
+        </div>
+        <div class="card-body">
+          <div><canvas id="myKeywordsChart" max-height=></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-container">
+    <button type="button" id="fetchData" class="btn btn-primary btn-lg btn-block" data-toggle="tooltip"
+      data-placement="bottom" title="Refresh Comments Data" onclick="getApiData(), lastRefresh()">Refresh Data</button>
+    <div class="text-center alert alert-light" role="alert">
+      Data was last refreshed:
+      <div id="refreshDataTime"></div>
+    </div>
+  </div>
 
 </body>
 
