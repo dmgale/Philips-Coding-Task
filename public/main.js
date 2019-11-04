@@ -147,7 +147,7 @@ async function getApiData() {
 
         // Display in List
         document.getElementById('listSuffixResult').innerHTML =
-            `<p class="text-success">Most popular Email Suffix:</p> <font size="+2"><b> ${mostPopularSuffix} 
+            `<p class="text-success">Most popular Email Suffix:</p> <font size="+2"><b> .${mostPopularSuffix} 
             </b></font> being used <font size="+2"><b> ${maxSuffixValue} </b></font> times.`
 
         mostPopularSuffixes = Object.assign(...Object
