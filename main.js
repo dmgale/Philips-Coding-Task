@@ -31,9 +31,9 @@ async function getApiData() {
         suffixes: {},
         keywords: {},
     })
-    console.log(objective.comments)
-    console.log(objective.suffixes)
-    console.log(objective.keywords)
+    console.log(objective.comments);
+    console.log(objective.suffixes);
+    console.log(objective.keywords);
 
 } //<--- END OF CLICK EVENT LISTENER 
 
@@ -55,9 +55,9 @@ getCommentsPerPost();
 // TODO 3. The most popular email address suffix i.e. .com 
 
 function getPopularEmailSuffix() {
-    
+
 }
-getPopularEmailSuffix()
+getPopularEmailSuffix();
 
 // 7. Iterate through 'suffixes' object 
 // 8. Require Most Popular suffix:
@@ -70,9 +70,9 @@ getPopularEmailSuffix()
 // TODO 3. The most popular keywords in the body text
 
 function getPopularKeywords() {
-    
+
 }
-getPopularKeywords()
+getPopularKeywords();
 
 // 7. Iterate through 'keywords' object 
 // 8. Collect all objects into a single object, 
