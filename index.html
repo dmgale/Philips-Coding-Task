@@ -67,14 +67,18 @@
           <div class="card-body">
             <p>Pull all of the comments from the following endpoint:</p>
             <div class="alert alert-primary text-center" role="alert">
-              <a
-                href="https://jsonplaceholder.typicode.com/posts/1/comments" target="_blank">https://jsonplaceholder.typicode.com/posts/1/comments</a>
+              <a href="https://jsonplaceholder.typicode.com/posts/1/comments"
+                target="_blank">https://jsonplaceholder.typicode.com/posts/1/comments</a>
             </div>
             <p>And answer the following questions:</p>
-            <ol class="list-group list-group-flush"></ul>
-              <li class="list-group-item"><span class="badge badge-primary badge-pill">1</span>  The number of comments per post</li>
-              <li class="list-group-item"><span class="badge badge-primary badge-pill">2</span>  The most popular email address suffix i.e. .com</li>
-              <li class="list-group-item"><span class="badge badge-primary badge-pill">3</span>  The most popular keywords in the body text</li>
+            <ol class="list-group list-group-flush">
+              </ul>
+              <li class="list-group-item"><span class="badge badge-primary badge-pill">1</span> The number of comments
+                per post</li>
+              <li class="list-group-item"><span class="badge badge-primary badge-pill">2</span> The most popular email
+                address suffix i.e. .com</li>
+              <li class="list-group-item"><span class="badge badge-primary badge-pill">3</span> The most popular
+                keywords in the body text</li>
             </ol>
           </div>
         </div>
@@ -91,10 +95,10 @@
         <div id="collapseTwo" class="collapse-show" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
 
-              <ul class="list-group list-group-flush">
-                  <li id="listSuffixResult" class="list-group-item"></li>
-                  <li id="listKeywordResult" class="list-group-item"></li>
-              </ul>
+            <ul class="list-group list-group-flush">
+              <li id="listSuffixResult" class="list-group-item"></li>
+              <li id="listKeywordResult" class="list-group-item"></li>
+            </ul>
 
           </div>
         </div>
@@ -116,11 +120,12 @@
         </div>
         <div class="card mb-3 shadow card-theme">
           <div class="card-header card-header-theme">
-            <h5>Top Suffix</h5>
-            <p class="font-weight-normal">The most popular email address suffix</p>
+            <h5>Top 3 Suffixes</h5>
+            <p class="font-weight-normal">The most popular email address suffixes</p>
           </div>
-          <div class="card-body"></div>
-          <p>TO ENTER PIE CHART</p>
+          <div class="card-body">
+            <div><canvas id="mySuffixPieChart" max-height=></canvas></div>
+          </div>
         </div>
       </div>
     </div>
@@ -132,7 +137,7 @@
             body text</p>
         </div>
         <div class="card-body">
-          <div><canvas id="myKeywordsChart" max-height=></canvas></div>
+          <div><canvas id="myKeywordsBarChart" max-height=></canvas></div>
         </div>
       </div>
     </div>

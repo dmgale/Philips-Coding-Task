@@ -45,8 +45,28 @@ async function getApiData() {
     let suffixesData = objective.suffixes;
     let keywordsData = objective.keywords;
 
+    // OBJECTIVE 1: Return Number of Comments per Post
+    function getCommentsPerPost() {
 
-    // Return Most Popular Suffix
+        const postIds = Object.keys(commentsData);
+        const uniqueNumberOfPosts = [... new Set(Object.values(commentsData))];
+
+        let commentsPerPost = {};
+        uniqueNumberOfPosts.forEach(number => {
+            commentsPerPost[number] = [];
+            for (let index = 0; index < postIds.length; index++) {
+                const _postId = postIds[index];
+                const element = commentsData[_postId];
+                if (element === number) {
+                    commentsPerPost[number].push(_postId);
+                };
+            }
+        })
+        console.log(JSON.stringify(commentsPerPost));
+    }
+    getCommentsPerPost();
+
+    // OBJECTIVE 2: Return Most Popular Suffix
     function getPopularEmailSuffix() {
         mostPopularSuffix = Object.keys(suffixesData)
             .reduce((a, b) => suffixesData[a] > suffixesData[b] ? a : b);
@@ -55,14 +75,60 @@ async function getApiData() {
         maxValue = Math.max(...value);
 
         // Display in List
-        document.getElementById('listSuffixResult').innerHTML = 
+        document.getElementById('listSuffixResult').innerHTML =
             `Most popular Suffix is <font size="+2"><strong> ${mostPopularSuffix} 
-            </strong></font> occuring <font size="+2"><strong> ${maxValue} </strong></font> times.`
-    }
+            </strong></font> being used <font size="+2"><strong> ${maxValue} </strong></font> times.`
+
+        mostPopularSuffixes = Object.assign(...Object
+            .entries(suffixesData)
+            .sort(({ 1: a }, { 1: b }) => b - a)
+            .slice(0, 5)  // Return top 5 Suffixes
+            .map(([key, value]) => ({ [key]: value }))
+        )
+
+        // PieChart - Keywords
+        var suffixKeys = Object.keys(mostPopularSuffixes)
+        var suffixValues = Object.values(mostPopularSuffixes)
+
+        // Display in Chart
+        var ctx = document.getElementById('mySuffixPieChart').getContext('2d');
+        var mySuffixChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: suffixKeys,
+                datasets: [
+                    {
+                        data: suffixValues,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Colors election"
+                }
+            }
+        });
+    };
+
     getPopularEmailSuffix();
 
 
-    // Return Most Popular Keywords
+    // OBJECTIVE 3: Return Most Popular Keywords
     function getPopularKeywords() {
 
         mostPopularKeywords = Object.assign(...Object
@@ -73,16 +139,17 @@ async function getApiData() {
         )
 
         // Barchart - Keywords
-        var commentKeys = Object.keys(mostPopularKeywords)  
-        var commentValues = Object.values(mostPopularKeywords) 
-         // Display in List
-         document.getElementById('listKeywordResult').innerHTML = 
-         `Most popular Suffix is <font size="+2"><strong> ${commentKeys} 
-         </strong></font> occuring <font size="+2"><strong> ${maxValue} </strong></font> times.`
-         console.log(mostPopularKeywords);
- 
+        var commentKeys = Object.keys(mostPopularKeywords)
+        var commentValues = Object.values(mostPopularKeywords)
+       
+        // Display in List
+        document.getElementById('listKeywordResult').innerHTML =
+            `Most popular Keywords are <font size="+2"><b> ${commentKeys.join(', ')}
+         </b></font><br> occuring <br> <font size="+2"><b> ${commentValues.join(', ')} </b></font> times respectively.
+         <br> Assumption made: a total of top 6 Keywords is sufficient`
 
-        var ctx = document.getElementById('myKeywordsChart').getContext('2d');
+        // Display in Chart
+        var ctx = document.getElementById('myKeywordsBarChart').getContext('2d');
         var myKeywordsChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -124,27 +191,6 @@ async function getApiData() {
         });
     };
     getPopularKeywords();
-
-    // Return Number of Comments per Post
-    function getCommentsPerPost() {
-
-        const postIds = Object.keys(commentsData);
-        const uniqueNumberOfPosts = [... new Set(Object.values(commentsData))];
-        
-        let commentsPerPost = {};
-        uniqueNumberOfPosts.forEach(number => {
-          commentsPerPost[number] = [];
-          for (let index = 0; index < postIds.length; index++) {
-            const _postId = postIds[index];
-            const element = commentsData[_postId];
-            if (element === number) {
-              commentsPerPost[number].push(_postId);
-            };
-          }
-        })
-        console.log(JSON.stringify(commentsPerPost));
-    }
-    getCommentsPerPost();
 
     // Reflect refresh on Time Display
     lastRefresh()
