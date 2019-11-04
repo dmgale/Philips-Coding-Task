@@ -68,14 +68,14 @@
             <p>Pull all of the comments from the following endpoint:</p>
             <div class="alert alert-primary text-center" role="alert">
               <a
-                href="https://jsonplaceholder.typicode.com/posts/1/comments">https://jsonplaceholder.typicode.com/posts/1/comments</a>
+                href="https://jsonplaceholder.typicode.com/posts/1/comments" target="_blank">https://jsonplaceholder.typicode.com/posts/1/comments</a>
             </div>
             <p>And answer the following questions:</p>
-            <ul>
-              <li>The number of comments per post</li>
-              <li>The most popular email address suffix i.e. .com</li>
-              <li>The most popular keywords in the body text</li>
-            </ul>
+            <ol class="list-group list-group-flush"></ul>
+              <li class="list-group-item"><span class="badge badge-primary badge-pill">1</span>  The number of comments per post</li>
+              <li class="list-group-item"><span class="badge badge-primary badge-pill">2</span>  The most popular email address suffix i.e. .com</li>
+              <li class="list-group-item"><span class="badge badge-primary badge-pill">3</span>  The most popular keywords in the body text</li>
+            </ol>
           </div>
         </div>
       </div>
@@ -84,12 +84,17 @@
           <h2 class="mb-0">
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
               aria-expanded="false" aria-controls="collapseTwo">
-              Results
+              List of Results
             </button>
           </h2>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div id="collapseTwo" class="collapse-show" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
+
+              <ul class="list-group list-group-flush">
+                  <li id="listSuffixResult" class="list-group-item"></li>
+                  <li id="listKeywordResult" class="list-group-item"></li>
+              </ul>
 
           </div>
         </div>

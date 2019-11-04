@@ -41,9 +41,9 @@ async function getApiData() {
     })
 
     // Output Reduced Objective Data
-    let commentsData = objective.comments;
-    let suffixesData = objective.suffixes;
-    let keywordsData = objective.keywords;
+    const commentsData = objective.comments;
+    const suffixesData = objective.suffixes;
+    const keywordsData = objective.keywords;
 
 
     // Return Most Popular Suffix
@@ -54,28 +54,29 @@ async function getApiData() {
         value = Object.values(suffixesData);
         maxValue = Math.max(...value);
 
-        console.log("Most popular Suffix is " + mostPopularSuffix + " occuring " + maxValue + " times.");
-        //TODO Display results in UI
+        document.getElementById('listSuffixResult').innerHTML = 
+            `Most popular Suffix is <font size="+2"><strong> ${mostPopularSuffix} 
+            </strong></font> occuring <font size="+2"><strong> ${maxValue} </strong></font> times.`
     }
     getPopularEmailSuffix();
 
 
     // Return Most Popular Keywords
     function getPopularKeywords() {
+
         mostPopularKeywords = Object.assign(...Object
             .entries(keywordsData)
             .sort(({ 1: a }, { 1: b }) => b - a)
             .slice(0, 6)  // Return top 5 Keywords
             .map(([key, value]) => ({ [key]: value }))
         )
+            
+        console.log(mostPopularKeywords);
+       // document.getElementById('listKeywordResult').innerHTML = `Most popular Keywords are .` `${mostPopularKeywords}`
 
-        var commentKeys = Object.keys(mostPopularKeywords)  // Return top 5 Keywords
-        var commentValues = Object.values(mostPopularKeywords)  // Return top 5 Keywords
-
-        console.log([commentKeys])
-        console.log([commentValues])
-
-        // Large Barchart Keywords
+        // Barchart - Keywords
+        var commentKeys = Object.keys(mostPopularKeywords)  
+        var commentValues = Object.values(mostPopularKeywords) 
 
         var ctx = document.getElementById('myKeywordsChart').getContext('2d');
         var myKeywordsChart = new Chart(ctx, {
@@ -121,6 +122,20 @@ async function getApiData() {
 
     // Return Number of Comments per Post
     function getCommentsPerPost() {
+
+        const postIds = Object.keys(comments);
+        const uniqueNumberOfPosts = [... new Set(Object.values(comments))];
+        let commentsPerPost = {};
+        uniqueNumberOfPosts.forEach(number => {
+          commentsPerPost[number] = [];
+          for (let index = 0; index < postIds.length; index++) {
+            const element = comments[postIds[index]];
+            if (element === number) {
+              commentsPerPost[number].push(element);
+            };
+          }
+        })
+        console.log(commentsPerPost);
 
         // 5. Iterate through 'comments' object 
         // 6. Create Groups according to total number of comments per postId
