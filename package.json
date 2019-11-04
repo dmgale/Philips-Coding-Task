@@ -1,0 +1,19 @@
+{
+  "name": "philips-coding-task",
+  "version": "1.0.0",
+  "description": "Comments Dashboard for Data Driven Decisions",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmgale/Philips-Coding-Task.git"
+  },
+  "author": "David Gale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmgale/Philips-Coding-Task/issues"
+  },
+  "homepage": "https://github.com/dmgale/Philips-Coding-Task#readme"
+}
