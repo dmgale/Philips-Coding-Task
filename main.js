@@ -43,16 +43,6 @@ console.log(suffixes);
 
 }
 
-// Require the email address suffix that appears the most
-// Each comment has an 1 email address, key "email"
-// 1. Fetch data
-// 2. Iterate through each comment
-// 3. Create new 'suffixes'  object with email key value pairs 
-//      - Reduce()
-// 4. Split email address at '.' - .split()
-// 5. Remove last element on object - .pop()
-// 6. Console log suffixes data
-
 // 7. Iterate through 'suffixes' object 
 // 8. Require Most Popular suffix:
 //      - Return properties - Object.keys() & Reduce()
