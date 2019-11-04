@@ -41,9 +41,9 @@ async function getApiData() {
     })
 
     // Output Reduced Objective Data
-    const commentsData = objective.comments;
-    const suffixesData = objective.suffixes;
-    const keywordsData = objective.keywords;
+    let commentsData = objective.comments;
+    let suffixesData = objective.suffixes;
+    let keywordsData = objective.keywords;
 
 
     // Return Most Popular Suffix
@@ -54,6 +54,7 @@ async function getApiData() {
         value = Object.values(suffixesData);
         maxValue = Math.max(...value);
 
+        // Display in List
         document.getElementById('listSuffixResult').innerHTML = 
             `Most popular Suffix is <font size="+2"><strong> ${mostPopularSuffix} 
             </strong></font> occuring <font size="+2"><strong> ${maxValue} </strong></font> times.`
@@ -70,13 +71,16 @@ async function getApiData() {
             .slice(0, 6)  // Return top 5 Keywords
             .map(([key, value]) => ({ [key]: value }))
         )
-            
-        console.log(mostPopularKeywords);
-       // document.getElementById('listKeywordResult').innerHTML = `Most popular Keywords are .` `${mostPopularKeywords}`
 
         // Barchart - Keywords
         var commentKeys = Object.keys(mostPopularKeywords)  
         var commentValues = Object.values(mostPopularKeywords) 
+         // Display in List
+         document.getElementById('listKeywordResult').innerHTML = 
+         `Most popular Suffix is <font size="+2"><strong> ${commentKeys} 
+         </strong></font> occuring <font size="+2"><strong> ${maxValue} </strong></font> times.`
+         console.log(mostPopularKeywords);
+ 
 
         var ctx = document.getElementById('myKeywordsChart').getContext('2d');
         var myKeywordsChart = new Chart(ctx, {
@@ -116,34 +120,26 @@ async function getApiData() {
             }
         });
     };
-
     getPopularKeywords();
-
 
     // Return Number of Comments per Post
     function getCommentsPerPost() {
 
-        const postIds = Object.keys(comments);
-        const uniqueNumberOfPosts = [... new Set(Object.values(comments))];
+        const postIds = Object.keys(commentsData);
+        const uniqueNumberOfPosts = [... new Set(Object.values(commentsData))];
+        
         let commentsPerPost = {};
         uniqueNumberOfPosts.forEach(number => {
           commentsPerPost[number] = [];
           for (let index = 0; index < postIds.length; index++) {
-            const element = comments[postIds[index]];
+            const _postId = postIds[index];
+            const element = commentsData[_postId];
             if (element === number) {
-              commentsPerPost[number].push(element);
+              commentsPerPost[number].push(_postId);
             };
           }
         })
-        console.log(commentsPerPost);
-
-        // 5. Iterate through 'comments' object 
-        // 6. Create Groups according to total number of comments per postId
-        //    i.e. Group A =  post that have 'x' comments
-        //         Group B =  post that have 'x' comments
-        // 7. Return total number of comments per post (average) if many Groups
-        // 8. Display results in UI
-
+        console.log(JSON.stringify(commentsPerPost));
     }
     getCommentsPerPost();
 
