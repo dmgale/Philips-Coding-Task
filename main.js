@@ -19,8 +19,6 @@ const comments = responseData.reduce((acc, { postId }) => {
 },{});
 console.log(comments); // 5 comments per postId exist x 100
 
-}
-
 // 5. Iterate through 'comments' object 
 // 6. Create Groups according to total number of comments per postId
 //    i.e. Group A =  post that have 'x' comments
@@ -30,6 +28,20 @@ console.log(comments); // 5 comments per postId exist x 100
 
 
 // TODO 3. The most popular email address suffix i.e. .com 
+
+const suffixes = responseData.reduce((acc, { email }) => {
+	const suffix = email.split('.').pop();
+	   
+		if (acc[suffix]) {
+			acc[suffix] = acc[suffix] +1;
+		} else {
+			acc[suffix] = 1;
+		}
+		return acc;
+},{});
+console.log(suffixes);
+
+}
 
 // Require the email address suffix that appears the most
 // Each comment has an 1 email address, key "email"
