@@ -64,18 +64,8 @@ async function getApiData() {
     }, {});
     console.log(keywords);
 
-    
+
 } //<--- END OF CLICK EVENT LISTENER 
-
-
-// Require the keywords (PLURAL) that appear the most
-// Each comment has an 1 body text, key "body", with varying lenghts
-// 1. Fetch data
-// 2. Iterate through each comment
-// 3. Create new 'keywords' object with word key value pairs 
-// 4. Split bodytext for spaces and \n Line Feed - .split()
-//         - Reduce() each after split
-// 6. Console log keywords data
 
 // 7. Iterate through 'keywords' object 
 // 8. Collect all objects into a single object, 
