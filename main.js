@@ -45,6 +45,25 @@ async function getApiData() {
     let suffixesData = objective.suffixes;
     let keywordsData = objective.keywords;
 
+        // Chart theme Colours
+        const chartbackgroundColor = [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ]
+       const chartBorderColor = [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ]
+
+
     // OBJECTIVE 1: Return Number of Comments per Post
     function getCommentsPerPost() {
 
@@ -62,16 +81,17 @@ async function getApiData() {
                 };
             }
         })
-        
+
         //  LineChart - Comments
         var commentPerPostKey = Object.keys(commentsPerPost);
         var commentKeys = Object.keys(commentsData);
         var commentValue = Object.values(commentsData);
+        var noPosts = commentValue.length;
 
         // Display in List
         document.getElementById('listCommentResult').innerHTML =
-            `<p class="text-success">Total number of Comments per Post:</p> <font size="+2"><b> ${commentPerPostKey} </b></font>`
-
+            `<p class="text-success">Total number of Comments per Post:</p> 
+            Total of <font size="+2"><b> ${noPosts} </b></font> Posts, containing <font size="+2"><b> ${commentPerPostKey} </b></font> Comments per Post.`
 
         // Display in Chart
         var ctx = document.getElementById('myCommentsLineChart').getContext('2d');
@@ -82,31 +102,31 @@ async function getApiData() {
                 datasets: [{
                     label: ['# of times used'],
                     data: commentValue,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    backgroundColor: chartbackgroundColor,
+                    borderColor: chartBorderColor,
                     borderWidth: 1
                 }]
             },
             options: {
+                title: {
+                    display: true,
+                    text: "Comments vs Posts Line-Chart"
+                },
                 legend: {
                     display: false
                 },
                 scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                          display: true,
+                          labelString: '# of Comments per post'
+                        },
+                    }],
                     xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Post identified by its postId'
+                          },
                         ticks: {
                             beginAtZero: true
                         }
@@ -150,27 +170,15 @@ async function getApiData() {
                 datasets: [
                     {
                         data: suffixValues,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)'
-                        ],
+                        backgroundColor: chartbackgroundColor,
+                        borderColor: chartBorderColor,
                     }
                 ]
             },
             options: {
                 title: {
                     display: true,
-                    text: "Colors election"
+                    text: "Suffix Doughnut Chart"
                 }
             }
         });
@@ -195,7 +203,7 @@ async function getApiData() {
 
         // Display in List
         document.getElementById('listKeywordResult').innerHTML =
-            `<p class="text-success">Most popular Keywords:</p> Words: <font size="+2"><b> ${keywordKeys.join(', ')}</b></font>
+            `<p class="text-success">Most popular (Top 6) Keywords:</p> Words: <font size="+2"><b> ${keywordKeys.join(', ')}</b></font>
             <br>Occuring: <font size="+2"><b> ${keywordValues.join(', ')} </b></font> times respectively.`
 
         // Display in Chart
@@ -207,31 +215,31 @@ async function getApiData() {
                 datasets: [{
                     label: ['# of times used'],
                     data: keywordValues,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    backgroundColor: chartbackgroundColor,
+                    borderColor: chartBorderColor,
                     borderWidth: 1
                 }]
             },
             options: {
+                title: {
+                    display: true,
+                    text: "Keyword Bar Chart"
+                },
                 legend: {
                     display: false
                 },
                 scales: {
                     yAxes: [{
+                        scaleLabel: {
+                          display: true,
+                          labelString: '# of Word Occurances'
+                        },
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Keyword Word used in a Comments body text'
+                          },
                         ticks: {
                             beginAtZero: true
                         }
@@ -244,4 +252,5 @@ async function getApiData() {
 
     // Reflect refresh on Time Display
     lastRefresh()
+
 } //<--- END OF CLICK EVENT LISTENER 
