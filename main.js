@@ -1,9 +1,10 @@
-// TODO 1. Pull all of the comments from the following endpoint
+const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
 
 async function getApiData() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1/comments");
-	const responseData = await response.json();
-	console.log('Async:', responseData)
+    const response = await fetch(url);
+    const responseData = await response.json();
+    
+	console.log('Async Fetch:', responseData)
 }
 
 
