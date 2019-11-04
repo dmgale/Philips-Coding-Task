@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/dmgale/Philips-Coding-Task/issues"
   },
-  "homepage": "https://github.com/dmgale/Philips-Coding-Task#readme"
+  "homepage": "https://github.com/dmgale/Philips-Coding-Task#readme",
+  "dependencies": {}
 }
