@@ -4,9 +4,9 @@ const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
 getApiData()
 
 //Last data refresh
-function lastRefresh() { 
+function lastRefresh() {
     var apiFetch = new Date();
-    document.getElementById('refreshDataTime').innerHTML=apiFetch
+    document.getElementById('refreshDataTime').innerHTML = apiFetch
 }
 
 //Increment Objectives Data
@@ -67,54 +67,54 @@ async function getApiData() {
             .sort(({ 1: a }, { 1: b }) => b - a)
             .slice(0, 6)  // Return top 5 Keywords
             .map(([key, value]) => ({ [key]: value }))
-            )
+        )
 
-    var commentKeys = Object.keys(mostPopularKeywords)  // Return top 5 Keywords
-    var commentValues = Object.values(mostPopularKeywords)  // Return top 5 Keywords
-    
-    console.log([commentKeys])
-    console.log([commentValues])
+        var commentKeys = Object.keys(mostPopularKeywords)  // Return top 5 Keywords
+        var commentValues = Object.values(mostPopularKeywords)  // Return top 5 Keywords
 
-// Large Barchart Keywords
+        console.log([commentKeys])
+        console.log([commentValues])
 
-    var ctx = document.getElementById('myKeywordsChart').getContext('2d');
-    var myKeywordsChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: commentKeys,
-            datasets: [{
-                label: ['Top  Keywords'],
-                data: commentValues,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        // Large Barchart Keywords
+
+        var ctx = document.getElementById('myKeywordsChart').getContext('2d');
+        var myKeywordsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: commentKeys,
+                datasets: [{
+                    label: ['Top  Keywords'],
+                    data: commentValues,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-};
+        });
+    };
 
     getPopularKeywords();
 
@@ -128,10 +128,10 @@ async function getApiData() {
         //         Group B =  post that have 'x' comments
         // 7. Return total number of comments per post (average) if many Groups
         // 8. Display results in UI
-        
-        }
-        getCommentsPerPost();
 
-        // Reflect refresh on Time Display
-        lastRefresh()
+    }
+    getCommentsPerPost();
+
+    // Reflect refresh on Time Display
+    lastRefresh()
 } //<--- END OF CLICK EVENT LISTENER 

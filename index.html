@@ -38,7 +38,8 @@
       <span class="logo logo-right">Monitor</span>
     </a>
     <div>
-      <h6 class="HP_logo"><img class="logoImg" src="/img/h_p_logo.png" alt="Health & Parenting" class="img-fluid">
+      <h6 class="HP_logo">Made for <img class="logoImg" src="/img/h_p_logo.png" alt="Health & Parenting"
+          class="img-fluid">
         Pregnancy +</h6>
     </div>
   </div>
@@ -51,47 +52,50 @@
   </div>
 
   <div class="section-container">
-      <div class="accordion" id="accordionExample">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Task Objective
-                </button>
-              </h2>
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Task Objective
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Pull all of the comments from the following endpoint:</p>
+            <div class="alert alert-primary text-center" role="alert">
+              <a
+                href="https://jsonplaceholder.typicode.com/posts/1/comments">https://jsonplaceholder.typicode.com/posts/1/comments</a>
             </div>
-        
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                  <p>Pull all of the comments from the following endpoint:</p>
-                  <div class="alert alert-primary text-center" role="alert">
-                      <a href="https://jsonplaceholder.typicode.com/posts/1/comments">https://jsonplaceholder.typicode.com/posts/1/comments</a>
-                  </div>
-                  <p>And answer the following questions:</p>
-                      <ul>
-                        <li>The number of comments per post</li>
-                        <li>The most popular email address suffix i.e. .com</li>
-                        <li>The most popular keywords in the body text</li>
-                      </ul> 
-              </div>
-            </div>
+            <p>And answer the following questions:</p>
+            <ul>
+              <li>The number of comments per post</li>
+              <li>The most popular email address suffix i.e. .com</li>
+              <li>The most popular keywords in the body text</li>
+            </ul>
           </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Results
-                </button>
-              </h2>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-              <div class="card-body">
-                
-              </div>
-            </div>
-          </div>      
         </div>
       </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseTwo">
+              Results
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <div class="section-container">
@@ -118,7 +122,8 @@
       <div class="card shadow card-theme card-bottom">
         <div class="card-header card-header theme">
           <h5>Top 6 Keywords</h5>
-          <p class="font-weight-normal">The most popular keywords in the body text, vs number of occurances within the body text</p>
+          <p class="font-weight-normal">The most popular keywords in the body text, vs number of occurances within the
+            body text</p>
         </div>
         <div class="card-body">
           <div><canvas id="myKeywordsChart" max-height=></canvas></div>
