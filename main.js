@@ -1,13 +1,13 @@
-const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
+const url = "https://jsonplaceholder.typicode.com/posts/1/comments";
 
 //Fetch on First Load
-getApiData()
+getApiData();
 
 //Last data refresh
 function lastRefresh() {
     var apiFetch = new Date();
     document.getElementById('refreshDataTime').innerHTML = apiFetch
-}
+};
 
 //Increment Objectives Data
 function increment(holding, current) {
@@ -16,7 +16,7 @@ function increment(holding, current) {
     } else {
         holding[current] = 1;
     }
-}
+};
 
 // Fetch API & Reduce Data
 async function getApiData() {
@@ -45,23 +45,23 @@ async function getApiData() {
     let suffixesData = objective.suffixes;
     let keywordsData = objective.keywords;
 
-        // Chart theme Colours
-        const chartbackgroundColor = [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-        ]
-       const chartBorderColor = [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ]
+    // Chart theme Colours
+    const chartbackgroundColor = [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+    ]
+    const chartBorderColor = [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+    ]
 
 
     // OBJECTIVE 1: Return Number of Comments per Post
@@ -104,31 +104,31 @@ async function getApiData() {
                     data: commentValue,
                     backgroundColor: chartbackgroundColor,
                     borderColor: chartBorderColor,
-                    borderWidth: 1
+                    borderWidth: 1,
                 }]
             },
             options: {
                 title: {
                     display: true,
-                    text: "Comments vs Posts Line-Chart"
+                    text: "Comments vs Posts Line-Chart",
                 },
                 legend: {
-                    display: false
+                    display: false,
                 },
                 scales: {
                     yAxes: [{
                         scaleLabel: {
-                          display: true,
-                          labelString: '# of Comments per post'
+                            display: true,
+                            labelString: '# of Comments per post',
                         },
                     }],
                     xAxes: [{
                         scaleLabel: {
                             display: true,
-                            labelString: 'Post identified by its postId'
-                          },
+                            labelString: 'Post identified by its postId',
+                        },
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
                         }
                     }]
                 }
@@ -154,12 +154,11 @@ async function getApiData() {
             .entries(suffixesData)
             .sort(({ 1: a }, { 1: b }) => b - a)
             .slice(0, 5)  // Return top 5 Suffixes
-            .map(([key, value]) => ({ [key]: value }))
-        )
+            .map(([key, value]) => ({ [key]: value })));
 
         // PieChart - Keywords
-        var suffixKeys = Object.keys(mostPopularSuffixes)
-        var suffixValues = Object.values(mostPopularSuffixes)
+        var suffixKeys = Object.keys(mostPopularSuffixes);
+        var suffixValues = Object.values(mostPopularSuffixes);
 
         // Display in Chart
         var ctx = document.getElementById('mySuffixPieChart').getContext('2d');
@@ -178,7 +177,7 @@ async function getApiData() {
             options: {
                 title: {
                     display: true,
-                    text: "Suffix Doughnut Chart"
+                    text: "Suffix Doughnut Chart",
                 }
             }
         });
@@ -194,12 +193,11 @@ async function getApiData() {
             .entries(keywordsData)
             .sort(({ 1: a }, { 1: b }) => b - a)
             .slice(0, 6)  // Return top 5 Keywords
-            .map(([key, value]) => ({ [key]: value }))
-        )
+            .map(([key, value]) => ({ [key]: value })))
 
         // Barchart - Keywords
-        var keywordKeys = Object.keys(mostPopularKeywords)
-        var keywordValues = Object.values(mostPopularKeywords)
+        var keywordKeys = Object.keys(mostPopularKeywords);
+        var keywordValues = Object.values(mostPopularKeywords);
 
         // Display in List
         document.getElementById('listKeywordResult').innerHTML =
@@ -223,25 +221,25 @@ async function getApiData() {
             options: {
                 title: {
                     display: true,
-                    text: "Keyword Bar Chart"
+                    text: "Keyword Bar Chart",
                 },
                 legend: {
-                    display: false
+                    display: false,
                 },
                 scales: {
                     yAxes: [{
                         scaleLabel: {
-                          display: true,
-                          labelString: '# of Word Occurances'
+                            display: true,
+                            labelString: '# of Word Occurances',
                         },
                     }],
                     xAxes: [{
                         scaleLabel: {
                             display: true,
-                            labelString: 'Keyword Word used in a Comments body text'
-                          },
+                            labelString: 'Keyword Word used in a Comments body text',
+                        },
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
                         }
                     }]
                 }
