@@ -8,16 +8,16 @@ async function getApiData() {
 
 // TODO 2. The number of comments per post
 
-const comments = responseData.reduce((acc, { postId }) => {
-	  
-    if (acc[postId]) {
-        acc[postId] = acc[postId] +1;
-    } else {
-        acc[postId] = 1;
-    } 
-    return acc;
-},{});
-console.log(comments); // 5 comments per postId exist x 100
+    const comments = responseData.reduce((acc, { postId }) => {
+
+        if (acc[postId]) {
+            acc[postId] = acc[postId] + 1;
+        } else {
+            acc[postId] = 1;
+        }
+        return acc;
+    }, {});
+    console.log(comments); // 5 comments per postId exist x 100
 
 // 5. Iterate through 'comments' object 
 // 6. Create Groups according to total number of comments per postId
@@ -29,19 +29,17 @@ console.log(comments); // 5 comments per postId exist x 100
 
 // TODO 3. The most popular email address suffix i.e. .com 
 
-const suffixes = responseData.reduce((acc, { email }) => {
-	const suffix = email.split('.').pop();
-	   
-		if (acc[suffix]) {
-			acc[suffix] = acc[suffix] +1;
-		} else {
-			acc[suffix] = 1;
-		}
-		return acc;
-},{});
-console.log(suffixes);
+    const suffixes = responseData.reduce((acc, { email }) => {
+        const suffix = email.split('.').pop();
 
-}
+        if (acc[suffix]) {
+            acc[suffix] = acc[suffix] + 1;
+        } else {
+            acc[suffix] = 1;
+        }
+        return acc;
+    }, {});
+    console.log(suffixes);
 
 // 7. Iterate through 'suffixes' object 
 // 8. Require Most Popular suffix:
@@ -52,6 +50,23 @@ console.log(suffixes);
 // 10. Display results in UI
 
 // TODO 3. The most popular keywords in the body text
+
+    const keywords = responseData.reduce((acc, { body }) => {
+        const keywordList = body.split(/[\s\n]+/);
+        keywordList.forEach((keyword) => {
+            if (acc[keyword]) {
+                acc[keyword] = acc[keyword] + 1;
+            } else {
+                acc[keyword] = 1;
+            }
+        });
+        return acc;
+    }, {});
+    console.log(keywords);
+
+    
+} //<--- END OF CLICK EVENT LISTENER 
+
 
 // Require the keywords (PLURAL) that appear the most
 // Each comment has an 1 body text, key "body", with varying lenghts
