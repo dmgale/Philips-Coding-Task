@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    color: #383838;
+    height: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+} 
+
+a {
+    color: #0B5ED9;
+}
+
+a:hover {
+    color: #000000;
+}
+
+.shadow {
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 5px 6px rgba(0,0,0,0.3);
+}
+
+.section-container {
+    padding: 30px;
+}
+
+#navbar{
+    background-color: #787878;
+    color: #0B5ED9;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#sideBar{
+    height: 100vh;
+    padding-top: 80px;
+    position: fixed;
+    background-color: #f2f2f2;
+
+}
+
+#dashboard{
+    margin-top: 80px;
+}
+
+
+/* Cards for Charts Style Theme */
+
+.card-theme {
+    background-color: #ffffff;
+    border: 6px solid #f2f2f2
+}
+
+.card-header-theme {
+    color: 711984;
+    padding: 12px;
+}
+
+.card-body-theme {
+    background-color: #383838;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+}
