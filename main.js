@@ -1,5 +1,8 @@
 const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
 
+//Fetch on First Load
+getApiData()
+
 //Increment Objectives Data
 function increment(holding, current) {
     if (holding[current]) {
@@ -56,13 +59,54 @@ async function getApiData() {
         mostPopularKeywords = Object.assign(...Object
             .entries(keywordsData)
             .sort(({ 1: a }, { 1: b }) => b - a)
-            .slice(0, 5)  // Return top 5 Keywords
+            .slice(0, 6)  // Return top 5 Keywords
             .map(([key, value]) => ({ [key]: value }))
             )
-            
-        console.log("5 most popular keywords are:", mostPopularKeywords);
-        };
-    //TODO Display results in UI
+
+    var commentKeys = Object.keys(mostPopularKeywords)  // Return top 5 Keywords
+    var commentValues = Object.values(mostPopularKeywords)  // Return top 5 Keywords
+    
+    console.log([commentKeys])
+    console.log([commentValues])
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: commentKeys,
+            datasets: [{
+                label: '# of Votes',
+                data: commentValues,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+};
     getPopularKeywords();
 
 
