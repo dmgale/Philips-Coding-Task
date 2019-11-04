@@ -3,37 +3,23 @@ const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
 async function getApiData() {
     const response = await fetch(url);
     const responseData = await response.json();
-    
 	console.log('Async Fetch:', responseData)
-}
-
-
-// Use Fetch API for URL - "https://jsonplaceholder.typicode.com/posts/1/comments"
-// Create function to invoke fetch data
-// Fetch data from URL (Promise based / Async Await)
-// Assign response as JSON
-// Console log data
-// Add error handling
+    // Add error handling
 
 // TODO 2. The number of comments per post
 
-/* Each comment contains: 
-{
-    "postId": int,
-    "id":  int,
-    "name": string,
-    "email": string,
-    "body": string
-  },
-*/
+const comments = responseData.reduce((acc, { postId }) => {
+	  
+    if (acc[postId]) {
+        acc[postId] = acc[postId] +1;
+    } else {
+        acc[postId] = 1;
+    } 
+    return acc;
+},{});
+console.log(comments); // 5 comments per postId exist x 100
 
-// Require the total number of comments
-// Each post has a "postId", require total number of comments per post
-// 1. Fetch data
-// 2. Iterate through each comment
-// 3. Create new 'comments' object with postId key value pairs 
-//      - Reduce()
-// 4. Console log comments data
+}
 
 // 5. Iterate through 'comments' object 
 // 6. Create Groups according to total number of comments per postId
