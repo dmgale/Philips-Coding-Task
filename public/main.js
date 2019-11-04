@@ -5,7 +5,7 @@ getApiData();
 
 //Last data refresh
 function lastRefresh() {
-    var apiFetch = new Date();
+    let apiFetch = new Date();
     document.getElementById('refreshDataTime').innerHTML = apiFetch
 };
 
@@ -83,10 +83,10 @@ async function getApiData() {
         })
 
         //  LineChart - Comments
-        var commentPerPostKey = Object.keys(commentsPerPost);
-        var commentKeys = Object.keys(commentsData);
-        var commentValue = Object.values(commentsData);
-        var noPosts = commentValue.length;
+        let commentPerPostKey = Object.keys(commentsPerPost);
+        let commentKeys = Object.keys(commentsData);
+        let commentValue = Object.values(commentsData);
+        let noPosts = commentValue.length;
 
         // Display in List
         document.getElementById('listCommentResult').innerHTML =
@@ -94,8 +94,8 @@ async function getApiData() {
             Total of <font size="+2"><b> ${noPosts} </b></font> Posts, containing <font size="+2"><b> ${commentPerPostKey} </b></font> Comments per Post.`
 
         // Display in Chart
-        var ctx = document.getElementById('myCommentsLineChart').getContext('2d');
-        var myCommentsChart = new Chart(ctx, {
+        let ctx = document.getElementById('myCommentsLineChart').getContext('2d');
+        let myCommentsChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: commentKeys,
@@ -157,12 +157,12 @@ async function getApiData() {
             .map(([key, value]) => ({ [key]: value })));
 
         // PieChart - Keywords
-        var suffixKeys = Object.keys(mostPopularSuffixes);
-        var suffixValues = Object.values(mostPopularSuffixes);
+        let suffixKeys = Object.keys(mostPopularSuffixes);
+        let suffixValues = Object.values(mostPopularSuffixes);
 
         // Display in Chart
-        var ctx = document.getElementById('mySuffixPieChart').getContext('2d');
-        var mySuffixChart = new Chart(ctx, {
+        let ctx = document.getElementById('mySuffixPieChart').getContext('2d');
+        let mySuffixChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: suffixKeys,
@@ -196,8 +196,8 @@ async function getApiData() {
             .map(([key, value]) => ({ [key]: value })))
 
         // Barchart - Keywords
-        var keywordKeys = Object.keys(mostPopularKeywords);
-        var keywordValues = Object.values(mostPopularKeywords);
+        let keywordKeys = Object.keys(mostPopularKeywords);
+        let keywordValues = Object.values(mostPopularKeywords);
 
         // Display in List
         document.getElementById('listKeywordResult').innerHTML =
@@ -205,8 +205,8 @@ async function getApiData() {
             <br>Occuring: <font size="+2"><b> ${keywordValues.join(', ')} </b></font> times respectively.`
 
         // Display in Chart
-        var ctx = document.getElementById('myKeywordsBarChart').getContext('2d');
-        var myKeywordsChart = new Chart(ctx, {
+        let ctx = document.getElementById('myKeywordsBarChart').getContext('2d');
+        let myKeywordsChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: keywordKeys,
