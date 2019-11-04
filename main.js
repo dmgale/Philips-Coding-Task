@@ -31,11 +31,26 @@ async function getApiData() {
         suffixes: {},
         keywords: {},
     })
-    console.log(objective.comments);
-    console.log(objective.suffixes);
-    console.log(objective.keywords);
 
-} //<--- END OF CLICK EVENT LISTENER 
+    // Reduced Objective Data
+    let commentsData = objective.comments;
+    let suffixesData = objective.suffixes;
+    let keywordsData = objective.keywords;
+
+
+    // Popular Suffix
+    function getPopularEmailSuffix() {
+        mostPopularSuffix = Object.keys(suffixesData)
+        .reduce((a, b) => suffixesData[a] > suffixesData[b] ? a : b);
+
+        value = Object.values(suffixesData);
+        maxValue = Math.max(...value);
+
+        console.log("Most popular Suffix is " + mostPopularSuffix + " occuring " + maxValue + " times.");
+        // 10. Display results in UI
+    }
+    getPopularEmailSuffix();
+
 
 // TODO 2. The number of comments per post
 
@@ -52,22 +67,7 @@ getCommentsPerPost();
 // 8. Display results in UI
 
 
-// TODO 3. The most popular email address suffix i.e. .com 
-
-function getPopularEmailSuffix() {
-
-}
-getPopularEmailSuffix();
-
-// 7. Iterate through 'suffixes' object 
-// 8. Require Most Popular suffix:
-//      - Return properties - Object.keys() & Reduce()
-// 9. Require Most Popular Value:
-//      - Loop of property values - Object.values()
-//      - Return highest value - Math.max()
-// 10. Display results in UI
-
-// TODO 3. The most popular keywords in the body text
+// TODO 4. The most popular keywords in the body text
 
 function getPopularKeywords() {
 
@@ -81,3 +81,6 @@ getPopularKeywords();
 // 11. Return the top (assume 5) keywords - slice() top 5 words
 // 12. Map object with key value pair and return - map()
 // 13. Display results in UI
+
+} //<--- END OF CLICK EVENT LISTENER 
+
