@@ -88,7 +88,7 @@ async function getApiData() {
             data: {
                 labels: commentKeys,
                 datasets: [{
-                    label: ['Top  Keywords'],
+                    label: ['# of times used'],
                     data: commentValues,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -110,6 +110,9 @@ async function getApiData() {
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
