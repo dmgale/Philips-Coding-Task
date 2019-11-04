@@ -62,7 +62,58 @@ async function getApiData() {
                 };
             }
         })
-        console.log(JSON.stringify(commentsPerPost));
+        
+        //  LineChart - Comments
+        var commentPerPostKey = Object.keys(commentsPerPost);
+        var commentKeys = Object.keys(commentsData);
+        var commentValue = Object.values(commentsData);
+
+        // Display in List
+        document.getElementById('listCommentResult').innerHTML =
+            `<p class="text-success">Total number of Comments per Post:</p> <font size="+2"><b> ${commentPerPostKey} </b></font>`
+
+
+        // Display in Chart
+        var ctx = document.getElementById('myCommentsLineChart').getContext('2d');
+        var myCommentsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: commentKeys,
+                datasets: [{
+                    label: ['# of times used'],
+                    data: commentValue,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
     }
     getCommentsPerPost();
 
@@ -71,13 +122,13 @@ async function getApiData() {
         mostPopularSuffix = Object.keys(suffixesData)
             .reduce((a, b) => suffixesData[a] > suffixesData[b] ? a : b);
 
-        value = Object.values(suffixesData);
-        maxValue = Math.max(...value);
+        suffixValue = Object.values(suffixesData);
+        maxSuffixValue = Math.max(...suffixValue);
 
         // Display in List
         document.getElementById('listSuffixResult').innerHTML =
-            `Most popular Suffix is <font size="+2"><strong> ${mostPopularSuffix} 
-            </strong></font> being used <font size="+2"><strong> ${maxValue} </strong></font> times.`
+            `<p class="text-success">Most popular Email Suffix:</p> <font size="+2"><b> ${mostPopularSuffix} 
+            </b></font> being used <font size="+2"><b> ${maxSuffixValue} </b></font> times.`
 
         mostPopularSuffixes = Object.assign(...Object
             .entries(suffixesData)
@@ -139,24 +190,23 @@ async function getApiData() {
         )
 
         // Barchart - Keywords
-        var commentKeys = Object.keys(mostPopularKeywords)
-        var commentValues = Object.values(mostPopularKeywords)
-       
+        var keywordKeys = Object.keys(mostPopularKeywords)
+        var keywordValues = Object.values(mostPopularKeywords)
+
         // Display in List
         document.getElementById('listKeywordResult').innerHTML =
-            `Most popular Keywords are <font size="+2"><b> ${commentKeys.join(', ')}
-         </b></font><br> occuring <br> <font size="+2"><b> ${commentValues.join(', ')} </b></font> times respectively.
-         <br> Assumption made: a total of top 6 Keywords is sufficient`
+            `<p class="text-success">Most popular Keywords:</p> Words: <font size="+2"><b> ${keywordKeys.join(', ')}</b></font>
+            <br>Occuring: <font size="+2"><b> ${keywordValues.join(', ')} </b></font> times respectively.`
 
         // Display in Chart
         var ctx = document.getElementById('myKeywordsBarChart').getContext('2d');
         var myKeywordsChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: commentKeys,
+                labels: keywordKeys,
                 datasets: [{
                     label: ['# of times used'],
-                    data: commentValues,
+                    data: keywordValues,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
