@@ -1,0 +1,24 @@
+{
+  "name": "philips-coding-test",
+  "version": "1.0.0",
+  "description": "Comments Dashboard for Data Driven Decisions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmgale/Philips-Coding-Task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmgale/Philips-Coding-Task/issues"
+  },
+  "homepage": "https://github.com/dmgale/Philips-Coding-Task#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-static": "^5.0.0"
+  }
+}
