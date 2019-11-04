@@ -1,23 +1,42 @@
 const url = "https://jsonplaceholder.typicode.com/posts/1/comments"
 
+//Holding for reducing each 'objectives' data 
+function increment(holding, current) {
+    if(holding[current]){
+        holding[current] += 1; 
+    } else {
+        holding[current] = 1;
+    }
+}
+
 async function getApiData() {
     const response = await fetch(url);
     const responseData = await response.json();
-	console.log('Async Fetch:', responseData)
+	// console.log('Async Fetch:', responseData)
     // Add error handling
 
-// TODO 2. The number of comments per post
-
-    const comments = responseData.reduce((acc, { postId }) => {
-
-        if (acc[postId]) {
-            acc[postId] = acc[postId] + 1;
-        } else {
-            acc[postId] = 1;
-        }
+    const objective = responseData.reduce((acc,{postId}) => {  
+    // TODO 2. The number of comments per post 
+        increment(acc.comments, postId);
         return acc;
-    }, {});
-    console.log(comments); // 5 comments per postId exist x 100
+    },{
+        comments : {},
+    })
+    console.log(objective.comments) 
+
+    // const comments = responseData.reduce((acc, { postId }) => {
+
+    //     if (acc[postId]) {
+    //         acc[postId] = acc[postId] + 1;
+    //     } else {
+    //         acc[postId] = 1;
+    //     }
+    //     return acc;
+    // }, {});
+    // console.log(comments); // 5 comments per postId exist x 100
+
+
+
 
 // 5. Iterate through 'comments' object 
 // 6. Create Groups according to total number of comments per postId
@@ -64,18 +83,8 @@ async function getApiData() {
     }, {});
     console.log(keywords);
 
-    
+
 } //<--- END OF CLICK EVENT LISTENER 
-
-
-// Require the keywords (PLURAL) that appear the most
-// Each comment has an 1 body text, key "body", with varying lenghts
-// 1. Fetch data
-// 2. Iterate through each comment
-// 3. Create new 'keywords' object with word key value pairs 
-// 4. Split bodytext for spaces and \n Line Feed - .split()
-//         - Reduce() each after split
-// 6. Console log keywords data
 
 // 7. Iterate through 'keywords' object 
 // 8. Collect all objects into a single object, 
