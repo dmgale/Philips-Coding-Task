@@ -37,13 +37,12 @@ async function getApiData() {
 
 } //<--- END OF CLICK EVENT LISTENER 
 
-
-
-
-
-
-
 // TODO 2. The number of comments per post
+
+function getCommentsPerPost() {
+
+}
+getCommentsPerPost();
 
 // 5. Iterate through 'comments' object 
 // 6. Create Groups according to total number of comments per postId
@@ -55,6 +54,11 @@ async function getApiData() {
 
 // TODO 3. The most popular email address suffix i.e. .com 
 
+function getPopularEmailSuffix() {
+    
+}
+getPopularEmailSuffix()
+
 // 7. Iterate through 'suffixes' object 
 // 8. Require Most Popular suffix:
 //      - Return properties - Object.keys() & Reduce()
@@ -64,6 +68,11 @@ async function getApiData() {
 // 10. Display results in UI
 
 // TODO 3. The most popular keywords in the body text
+
+function getPopularKeywords() {
+    
+}
+getPopularKeywords()
 
 // 7. Iterate through 'keywords' object 
 // 8. Collect all objects into a single object, 
